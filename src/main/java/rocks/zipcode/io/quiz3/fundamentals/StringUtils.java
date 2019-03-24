@@ -1,7 +1,9 @@
 package rocks.zipcode.io.quiz3.fundamentals;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static java.lang.Character.toUpperCase;
 
@@ -9,46 +11,42 @@ import static java.lang.Character.toUpperCase;
  * @author leon on 09/12/2018.
  */
 public class StringUtils {
-   // String str="";
+    // String str="";
     //Integer indexToCapitalize;
 
     public static String capitalizeNthCharacter(String str, Integer indexToCapitalize) {
+        String beginning = str.substring(0, indexToCapitalize);
+        Character upperCase = Character.toUpperCase(str.charAt(indexToCapitalize));
+        String ending = str.substring(indexToCapitalize + 1);
 
-
-
-           // return str.toUpperCase(indexToCapitalize);
-return null;
-
+        return beginning + upperCase + ending;
     }
-
-
-
 
     public static Boolean isCharacterAtIndex(String baseString, Character characterToCheckFor, Integer indexOfString) {
-      //  return baseString.substring(characterToCheckFor,indexOfString);
-    return  null;
+       // return (baseString.charAt(indexOfString)).( characterToCheckFor);
+        return characterToCheckFor.equals(baseString.charAt(indexOfString));
     }
+
 
     public static String[] getAllSubStrings(String string) {
-        int i = 0;
-        int j = 1;
-        String[] result;
+        Set<String> list = new HashSet<>();
 
-        for (i = 0; i < string.length(); i++)
-            if (j < string.length()) {
-                String.format("\"" + (string.substring(i, j) + "\","));
-
+        for (int i = 0; i < string.length(); i++) {
+            for (int j = i + 1; j <= string.length(); j++) {
+                String sub = string.substring(i, j);
+                list.add(sub);
             }
-        //return String[i];
-        return null;
+        }
+        String[] all = new String[list.size()];
+        return list.toArray(all);
     }
-
 
     public static Integer getNumberOfSubStrings(String input){
 
+        return getAllSubStrings(input).length;
 
-            int n = input.length();
-            return (n * (n + 1) / 2)-1;
+//            int n = input.length();
+//            return (n * (n + 1) / 2)-1;
 
     }
 }

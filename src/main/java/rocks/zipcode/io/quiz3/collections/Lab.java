@@ -3,8 +3,8 @@ package rocks.zipcode.io.quiz3.collections;
 /**
  * @author leon on 10/12/2018.
  */
-public class Lab {
-    String labName;
+public class Lab implements Comparable<Lab> {
+    private String labName;
 
     public Lab() {
 
@@ -19,5 +19,10 @@ public class Lab {
     public String getName() {
 
         return labName;
+    }
+
+    @Override
+    public int compareTo(Lab o) {
+        return labName.compareTo(o.labName);
     }
 }

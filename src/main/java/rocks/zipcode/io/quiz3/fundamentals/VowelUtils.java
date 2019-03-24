@@ -4,46 +4,39 @@ package rocks.zipcode.io.quiz3.fundamentals;
  * @author leon on 09/12/2018.
  */
 public class VowelUtils {
-    public static Boolean hasVowels(String word) {
+    private static final Character[] VOWELS = {'A', 'E', 'I', 'O', 'U',
+            'a', 'e', 'i', 'o', 'u'};
 
-        return null;
+    public static Boolean hasVowels(String word) {
+        for(int i = 0; i < VOWELS.length; i++) {
+            if(word.contains(VOWELS[i].toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static Integer getIndexOfFirstVowel(String word) {
-
-        String loweredWord = word.toLowerCase();
-
-        for (int index = 0; index < loweredWord.length(); index++)
-        {
-
-                switch(word.charAt(index)){
-                    case 'a':
-                    case 'e':
-                    case 'i':
-                    case 'o':
-                    case 'u':
-                    case 'y':
-
-
-                return index;
+        for(int i = 0; i < word.length(); i++) {
+            Character c = word.charAt(i);
+            if (isVowel(c)) {
+                return i;
             }
         }
         return null;
     }
 
+
     public static Boolean startsWithVowel(String word) {
-
-
-
-              //  return "AEIOUaeiou".startsWith(word.startsWith("AEIOUaeiou") != -1;
-        return  null;
-        }
-
-
+        return isVowel(word.charAt(0));
+    }
 
     public static Boolean isVowel(Character character) {
-
-        return "AEIOUaeiou".indexOf(character) != -1;
-
+        for(int i = 0; i < VOWELS.length; i++) {
+            if(character == VOWELS[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 }
